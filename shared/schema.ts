@@ -1,13 +1,11 @@
-import { pgTable, text, serial, integer, boolean, timestamp, jsonb, decimal } from "drizzle-orm/pg-core";
+import { decimal, pgTable, serial, text, timestamp } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
-import { relations } from "drizzle-orm";
 
 // Export auth and chat models
 export * from "./models/auth";
 export * from "./models/chat";
 
-import { users } from "./models/auth";
 
 // Crypto Favorites
 export const favorites = pgTable("favorites", {

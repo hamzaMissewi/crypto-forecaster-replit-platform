@@ -34,14 +34,14 @@ export function Sidebar() {
           {NAV_ITEMS.map((item) => {
             const isActive = location === item.href;
             const Icon = item.icon;
-            
+
             return (
               <Link key={item.href} href={item.href}>
-                <div 
+                <div
                   className={cn(
                     "flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 cursor-pointer group",
-                    isActive 
-                      ? "bg-primary/10 text-primary border border-primary/20 shadow-[0_0_15px_rgba(0,240,255,0.1)]" 
+                    isActive
+                      ? "bg-primary/10 text-primary border border-primary/20 shadow-[0_0_15px_rgba(0,240,255,0.1)]"
                       : "text-muted-foreground hover:text-foreground hover:bg-white/5"
                   )}
                   onClick={() => setMobileOpen(false)}
@@ -64,16 +64,16 @@ export function Sidebar() {
             <div className="flex items-center gap-3 px-2">
               <div className="w-10 h-10 rounded-full bg-gradient-to-br from-secondary to-black flex items-center justify-center border border-white/10">
                 <span className="text-lg font-bold text-primary font-display">
-                  {user?.firstName?.[0] || user?.username?.[0] || "U"}
+                  {user?.firstName?.[0] || user?.lastName?.[0] || "U"}
                 </span>
               </div>
               <div className="flex flex-col overflow-hidden">
                 <span className="text-sm font-semibold truncate">{user?.firstName || "User"}</span>
-                <span className="text-xs text-muted-foreground truncate">{user?.username || "Crypto Trader"}</span>
+                <span className="text-xs text-muted-foreground truncate">{user?.firstName || "Crypto Trader"}</span>
               </div>
             </div>
-            <Button 
-              variant="outline" 
+            <Button
+              variant="outline"
               className="w-full justify-start gap-2 border-white/10 hover:bg-destructive/10 hover:text-destructive hover:border-destructive/30"
               onClick={() => logout()}
             >
@@ -88,7 +88,8 @@ export function Sidebar() {
             <a href="/api/login" className="block">
               <Button className="w-full gap-2 bg-primary text-primary-foreground hover:bg-primary/90">
                 <LogIn className="w-4 h-4" />
-                Login via Replit
+                Login
+                {/* Login via Replit */}
               </Button>
             </a>
           </div>

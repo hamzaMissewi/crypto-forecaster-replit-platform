@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: crypto-forecaster-api
+    env: node
+    plan: free
+    buildCommand: npm run build:server
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        sync: false
+      - key: AI_INTEGRATIONS_OPENAI_API_KEY
+        sync: false
+      - key: AI_INTEGRATIONS_OPENAI_BASE_URL
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: OPENAI_API_BASE_URL
+        sync: false
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: ISSUER_URL
+        value: https://replit.com/oidc
+      - key: REPL_ID
+        sync: false
+      - key: REPL_SECRET
+        sync: false

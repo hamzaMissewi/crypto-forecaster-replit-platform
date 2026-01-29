@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "buildCommand": "npm run build:client",
+  "outputDirectory": "dist/public",
+  "installCommand": "npm install",
+  "framework": "vite"
+}

@@ -7,6 +7,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 export default function Dashboard() {
   const { data: marketData, isLoading } = useCryptoMarket();
+  // console.log(marketData);
 
   if (isLoading) {
     return (
@@ -104,7 +105,7 @@ export default function Dashboard() {
                     <span className="text-sm text-muted-foreground">${(coin.market_cap / 1e9).toFixed(1)}B</span>
                   </div>
                   <div className="h-2 rounded-full bg-white/5 overflow-hidden">
-                    <motion.div 
+                    <motion.div
                       initial={{ width: 0 }}
                       animate={{ width: `${(coin.market_cap / marketData[0].market_cap) * 100}%` }}
                       transition={{ duration: 1, delay: idx * 0.1 }}
@@ -118,24 +119,24 @@ export default function Dashboard() {
         </div>
 
         <div className="glass-card p-6 rounded-2xl">
-           <div className="flex items-center gap-2 mb-6">
+          <div className="flex items-center gap-2 mb-6">
             <TrendingUp className="w-5 h-5 text-accent" />
             <h3 className="font-bold text-lg">Trending Assets</h3>
           </div>
           <div className="space-y-3">
-             {marketData.slice(5, 10).map((coin) => (
-               <div key={coin.id} className="flex items-center justify-between p-3 rounded-xl hover:bg-white/5 transition-colors cursor-pointer group">
-                 <div className="flex items-center gap-3">
-                   <div className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-xs font-bold group-hover:border-accent/50 transition-colors">
-                     {coin.symbol[0].toUpperCase()}
-                   </div>
-                   <span className="font-medium">{coin.name}</span>
-                 </div>
-                 <div className={`text-sm font-medium ${coin.price_change_percentage_24h >= 0 ? 'text-green-400' : 'text-red-400'}`}>
-                   {coin.price_change_percentage_24h > 0 ? '+' : ''}{coin.price_change_percentage_24h.toFixed(2)}%
-                 </div>
-               </div>
-             ))}
+            {marketData.slice(5, 10).map((coin) => (
+              <div key={coin.id} className="flex items-center justify-between p-3 rounded-xl hover:bg-white/5 transition-colors cursor-pointer group">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-xs font-bold group-hover:border-accent/50 transition-colors">
+                    {coin.symbol[0].toUpperCase()}
+                  </div>
+                  <span className="font-medium">{coin.name}</span>
+                </div>
+                <div className={`text-sm font-medium ${coin.price_change_percentage_24h >= 0 ? 'text-green-400' : 'text-red-400'}`}>
+                  {coin.price_change_percentage_24h > 0 ? '+' : ''}{coin.price_change_percentage_24h.toFixed(2)}%
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
