@@ -72,7 +72,7 @@ export async function convertToWav(audioBuffer: Buffer): Promise<Buffer> {
         outputPath,
       ]);
 
-      ffmpeg.stderr.on("data", () => {}); // Suppress logs
+      ffmpeg.stderr.on("data", () => { }); // Suppress logs
       ffmpeg.on("close", (code) => {
         if (code === 0) resolve();
         else reject(new Error(`ffmpeg exited with code ${code}`));
@@ -84,8 +84,8 @@ export async function convertToWav(audioBuffer: Buffer): Promise<Buffer> {
     return await readFile(outputPath);
   } finally {
     // Clean up temp files
-    await unlink(inputPath).catch(() => {});
-    await unlink(outputPath).catch(() => {});
+    await unlink(inputPath).catch(() => { });
+    await unlink(outputPath).catch(() => { });
   }
 }
 
@@ -107,7 +107,7 @@ export async function ensureCompatibleFormat(
 
 /**
  * Voice Chat: User speaks, LLM responds with audio (audio-in, audio-out).
- * Uses gpt-audio model via Replit AI Integrations.
+ * Uses gpt-audio model via AI Integrations.
  * Note: Browser records WebM/opus - convert to WAV using ffmpeg before calling this.
  */
 export async function voiceChat(
@@ -182,7 +182,7 @@ export async function voiceChatStream(
 
 /**
  * Text-to-Speech: Converts text to speech verbatim.
- * Uses gpt-audio model via Replit AI Integrations.
+ * Uses gpt-audio model via AI Integrations.
  */
 export async function textToSpeech(
   text: string,

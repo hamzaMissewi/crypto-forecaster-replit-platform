@@ -11,9 +11,9 @@ import { authStorage } from "./storage";
 const getOidcConfig = memoize(
   async () => {
     return await client.discovery(
-      new URL(process.env.ISSUER_URL ?? "https://replit.com/oidc"),
+      new URL(process.env.ISSUER_URL ?? ""),
       process.env.REPL_ID!
-    );
+    )
   },
   { maxAge: 3600 * 1000 }
 );
