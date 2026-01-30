@@ -1,9 +1,9 @@
 import type { Express } from "express";
-import { createServer, type Server } from "http";
+import { type Server } from "http";
 import { storage } from "./storage";
-import { setupAuth } from "./replit_integrations/auth";
-import { registerAuthRoutes } from "./replit_integrations/auth";
-import { registerChatRoutes } from "./replit_integrations/chat";
+import { setupAuth } from "./auth";
+import { registerAuthRoutes } from "./auth";
+import { registerChatRoutes } from "./chat";
 import { api } from "@shared/routes";
 import { z } from "zod";
 
@@ -115,7 +115,7 @@ export async function registerRoutes(
         date: new Date(req.body.date),
         investmentAmount: String(req.body.investmentAmount), // Drizzle decimal is string in JS
       };
-      
+
       const input = api.scenarios.create.input.parse(body);
       const scenario = await storage.createScenario(user.claims.sub, input);
       res.status(201).json(scenario);
